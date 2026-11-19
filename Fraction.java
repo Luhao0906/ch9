@@ -12,7 +12,7 @@ public class Fraction{
 	
 	public Fraction (int n, int d){ //parameter
 		numerator = n;
-		denominator = setDenom(d);
+		setDenom(d);
 		
 	}
 	
@@ -21,7 +21,7 @@ public class Fraction{
 		String num1 = a.substring(0,index);
 		String num2 = a.substring(index+1);
 		numerator = Integer.parseInt(num1);
-		denominator = setDenom(Integer.parseInt(num2));
+		setDenom(Integer.parseInt(num2));
 		
 		
 	}
@@ -62,6 +62,15 @@ public class Fraction{
 			denominator=1;
 			System.out.println("denominator cannot be 0");
 		}
+	}
+	
+	public static Fraction mult (Fraction a, Fraction b){
+		int n = a.getNum() + b.getNum();
+		int d = a.getDenom() + b.getDenom();
+		Fraction answer = new Fraction(n,d);
+		return answer;
+		
+		
 	}
 	
 	
