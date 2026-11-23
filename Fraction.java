@@ -6,7 +6,7 @@ public class Fraction{
 	//constructors
 	public Fraction (){ //default
 		numerator = 1;
-		denominator = 1;
+		denominator = 2;
 		
 	}
 	
@@ -65,13 +65,33 @@ public class Fraction{
 	}
 	
 	public static Fraction mult (Fraction a, Fraction b){
-		int n = a.getNum() + b.getNum();
-		int d = a.getDenom() + b.getDenom();
+		int n = a.getNum() * b.getNum();
+		int d = a.getDenom() * b.getDenom();
 		Fraction answer = new Fraction(n,d);
 		return answer;
-		
-		
+			
 	}
 	
+	public static int GCF (Fraction a){
+		int n = a.getNum();
+		int d = a.getDenom();
+		int gcf=0;
+		while(n != d){
+			if (n>d){
+				n=n-d;
+				gcf=n;
+			}
+			else{
+				d=d-n;
+				gcf=d;
+				
+			}
+			
+			
+		}
+		return gcf;
+		
+	
+		}
 	
 }
