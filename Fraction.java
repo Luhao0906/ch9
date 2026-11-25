@@ -30,7 +30,6 @@ public class Fraction{
 		numerator = f.numerator;
 		denominator = f.denominator;
 		
-		
 	}
 	
 	
@@ -64,34 +63,69 @@ public class Fraction{
 		}
 	}
 	
-	public static Fraction mult (Fraction a, Fraction b){
-		int n = a.getNum() * b.getNum();
-		int d = a.getDenom() * b.getDenom();
+	public void reduce() {
+		int gcf = GCF(numerator, denominator);
+		numerator = numerator / gcf;
+		denominator = denominator / gcf;
+	}
+	
+	//mult
+	public static Fraction mult (Fraction a, Fraction b){ 
+		int n = a.getNum() * b.getNum() ;
+		int d = a.getDenom() * b.getDenom() ;
 		Fraction answer = new Fraction(n,d);
+		answer.reduce();
 		return answer;
 			
 	}
 	
-	public static int GCF (Fraction a){
-		int n = a.getNum();
-		int d = a.getDenom();
-		int gcf=0;
+	//add
+	public static Fraction add (Fraction a, Fraction b){ 
+		int n = a.getNum() * b.getDenom() + a.getDenom() * b.getNum();
+		int d = a.getDenom() * b.getDenom();
+		Fraction answer = new Fraction(n,d);
+		answer.reduce();
+		return answer;
+			
+	}
+	
+	//minus
+	public static Fraction minus (Fraction a, Fraction b){ 
+		int n = a.getNum() * b.getDenom() - a.getDenom() * b.getNum();
+		int d = a.getDenom() * b.getDenom();
+		Fraction answer = new Fraction(n,d);
+		answer.reduce();
+		return answer;
+			
+	}
+	
+	//divide
+	public static Fraction divide (Fraction a, Fraction b){ 
+		int n = a.getNum() * b.getDenom();
+		int d = a.getDenom() * b.getNum();
+		Fraction answer = new Fraction(n,d);
+		answer.reduce();
+		return answer;	
+	}
+	
+	//find GCF
+	public int GCF (int n, int d){
+		n = Math.abs(n);
+		d = Math.abs(d);
+		int gcf=n;
 		while(n != d){
+			System.out.println(n + " " + d);
 			if (n>d){
 				n=n-d;
 				gcf=n;
 			}
-			else{
+			else if (d>n) {
 				d=d-n;
 				gcf=d;
 				
 			}
-			
-			
 		}
 		return gcf;
-		
-	
 		}
 	
 }
